@@ -1,0 +1,44 @@
+<% if user_signed_in? %>
+
+<div class="container">
+
+   <h4 style="font-weight:bold;"><%= current_user.username %>'s Pastebin</h4>
+   <table class="table">
+    <thead>
+      <tr>
+        <th>Name / Title</th>
+        <th>Added</th>
+
+      </tr>
+    </thead>
+    <tbody><% @pastes.each do |paste| %>
+      <tr>
+		   
+			  <% if paste.user_id == current_user.id %>
+			   <td><span style="color:#CCCCCC;" class="glyphicon glyphicon-globe"></span> <%= link_to paste.title, paste_path(paste) %></td>
+			   <td><%= time_ago_in_words(paste.created_at) %> ago</td>
+			   <td><%= link_to edit_paste_path(paste) do %>
+			   		<span class="glyphicon glyphicon-pencil"></span>
+					<% end %>
+			   </td>
+			   <td><%= link_to paste_path(paste), method: :delete, data: { confirm: "Are you sure?" } do %>
+			   		<span class="glyphicon glyphicon-remove"></span>
+					<% end %>
+			   
+			   <% else %> 
+				<% end %>
+				
+
+			<% end %>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+<% else %>
+        <script type="text/javascript">
+            window.location.href = "<%= root_path %>"
+        </script>
+<% end %>

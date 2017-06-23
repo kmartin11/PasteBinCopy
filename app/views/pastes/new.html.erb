@@ -1,0 +1,16 @@
+<div class="row">
+<div class="col-sm-10">
+<%= render 'form' %>
+</div>
+
+<div class="col-sm-2">
+<p style="font-weight:bold;">Public Pastes</p>
+<% @pastes.take(5).each do |paste| %>
+<div style="border-bottom:1px dotted #DDDDDD;">
+	<p><span class="glyphicon glyphicon-globe"></span> <%= link_to paste.title, paste_path(paste), style: "color:#CC0033;" %><br>
+	<%= time_ago_in_words(paste.created_at) %> ago
+	</p>
+
+</div>
+<% end %>
+</div>

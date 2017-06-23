@@ -1,0 +1,38 @@
+<!--
+	<p><span class="glyphicon glyphicon-globe"></span> <%#= link_to paste.title, paste_path(paste) %></p>
+	<p><%#= time_ago_in_words(paste.created_at) %> ago</p>
+-->
+	
+	<div class="container">
+  <h4 style="font-weight:bold;">Public Pastes</h4>
+  <p style="border: 1px solid #DDDDDD; padding:10px; border-left: 6px solid #DDDDDD;">
+  
+ <i span style="color:#DDDDDD;"class="glyphicon glyphicon-info-sign"></i> This page contains the most recent public pastes that were created.
+  
+  </p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name / Title</th>
+        <th>Added</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody><% @pastes.each do |paste| %>
+      <tr>
+        <td><%= link_to paste.title, paste_path(paste) %></td>
+        <td><%= time_ago_in_words(paste.created_at) %> ago</td>
+        <td>
+		<% if paste.username.nil? %>
+		<% paste.username = "-" %>
+		<% end %>
+		<%= paste.username %></td>
+      </tr>
+	  <% end %>
+      <tr>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+

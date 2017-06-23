@@ -1,0 +1,63 @@
+<div class="col-sm-10">
+<div style="margin-bottom:10px;">
+<span class="glyphicon glyphicon-user" style="font-size:42px; border: 1px solid #DDDDDD; padding-top:5px; padding-left:5px; padding-right:5px; float:left; background-color:#F5EEE5; color:#F2CEA5;"></span>
+<p style="font-weight:bold; padding:-5px;"> 
+&nbsp;<%= @paste.title %></p>
+
+&nbsp;<span class="glyphicon glyphicon-user" style="font-size:10px; border: 1px solid #DDDDDD; padding:4px; border-radius:50%; color: #C9C9C9;"></span>	<span style="font-size:12px; ">
+
+<% if @paste.username.nil? %>
+<span>Guest</span>
+<% else %>
+<%= @paste.username %>
+<% end %>
+
+</span>
+&nbsp;<span class="glyphicon glyphicon-calendar" style="font-size:12px; padding:4px; border-radius:50%; color:#C9C9C9;"></span>	<span style="font-size:12px; "><%= @paste.created_at.strftime("%B %d %Y, %l:%M%P") %></span>
+&nbsp;<span class="glyphicon glyphicon-eye-open" style="font-size:12px; padding:4px; border-radius:50%; color:#C9C9C9;"></span>	<span style="font-size:12px;" id="counter"></span>
+<span class="glyphicon glyphicon-time" style="font-size:12px; padding:4px; border-radius:50%; color: #C9C9C9;"></span>	<span style="font-size:12px; ">Never</span>
+</div>
+
+<% if user_signed_in? %>
+<% else %>
+  <p style="border: 1px solid #DDDDDD; padding:10px; border-left: 8px solid #DDDDDD; border-radius:1px; ">
+  
+ <i span style="color:#DDDDDD;"class="glyphicon glyphicon-info-sign"></i> &nbsp;<span style="font-size:12.5px;"><span style="font-weight:bold;">Not a member of Pastebin yet? 
+ 
+ <%= link_to "Sign Up", new_user_registration_path, style:"color:red; text-decoration: underline;" %>
+ 
+</span>, it unlocks many cool features!</span>
+  
+  </p>    
+  
+  <% end %>
+<p>
+<pre style="background-color:white;"><%= @paste.description %></pre>
+</p>
+
+</div>
+<div class="col-sm-2">
+<p style="font-weight:bold;">Public Pastes</p>
+<% @pastes.take(5).each do |paste| %>
+<div style="border-bottom:1px dotted #DDDDDD;">
+	<p><span class="glyphicon glyphicon-globe"></span> <%= link_to paste.title, paste_path(paste), style: "color:#CC0033;" %><br>
+	<%= time_ago_in_words(paste.created_at) %> ago
+	</p>
+
+</div>
+<% end %>
+</div>
+ 
+<script>
+var n = localStorage.getItem('on_load_counter');
+ 
+if (n === null) {
+    n = 0;
+}
+ 
+n++;
+ 
+localStorage.setItem("on_load_counter", n);
+ 
+document.getElementById('counter').innerHTML = n;
+</script>
