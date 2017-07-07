@@ -16,4 +16,4 @@ $ bundle install
 $ rails s
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Based on the website [Pastebin.com](https://pastebin.com/). 
