@@ -1,24 +1,19 @@
-# README
+# PasteBinCopy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> A Ruby on Rails project
 
-Things you may want to cover:
+## Build Setup
 
-* Ruby version
+``` bash
 
-* System dependencies
+# reset database
+$ rake db:reset
 
-* Configuration
+# install gems/dependencies
+$ bundle install
 
-* Database creation
+# run build
+$ rails s
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
