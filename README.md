@@ -19,4 +19,3 @@ $ bundle install
 # run build
 $ rails s
 ```
-Live demo can be found on [here on Heroku](https://desolate-coast-46812.herokuapp.com/). <br><br>
